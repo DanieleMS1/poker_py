@@ -1,6 +1,7 @@
 from random import shuffle, randint
 
 from Player import *
+from game_creation import create_pot
 
 # BLINDS------------------------------------------------------------------------
 
@@ -15,15 +16,6 @@ def start_buttons(list_of_players):
         start_bb = start_sb + 1
     list_of_players[start_sb].sb = 'SB'
     list_of_players[start_bb].bb = 'BB'
-
-
-def put_blinds_in_pot(list_of_players, pot):
-    "Puts the blinds in the pot"
-    sb_bet = 10
-    sb_player = search_for_sb(list_of_players)
-    bb_player = search_for_bb(list_of_players)
-    bet(sb_player, list_of_players, sb_bet, pot)
-    bet(bb_player, list_of_players, 2 * sb_bet, pot)
 
 
 def search_for_sb(list_of_players):
@@ -94,7 +86,7 @@ def bet_tracker(player, bet, pot):
 
 
 def check_enough_money(player, list_of_players):
-    "Kicks the player with no money"
+    "Kicks the player with no money and shifts the blinds if necessary"
     if player.money == 0:
         if player.sb != '':
             rotate_buttons(list_of_players)
@@ -111,13 +103,7 @@ def all_in(player, list_of_players, bet):
 
 def fold(player, list_of_players):
     "Ask the player if he wants to fold"
-    check = input("Player {} Would you like to fold ? : [Y/N]".format(player))
+    check = input(
+        "Player {} Would you like to fold ? : [Y/N]".format(player.name))
     if check.lower() == 'y':
         del list_of_players[player]
-
-
-def empty_bets_in_pot(pot, list_of_players):
-    "Resets the pot"
-    for player in list_of_players:
-        if player in pot:
-            del pot[player]

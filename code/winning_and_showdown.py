@@ -1,6 +1,5 @@
 from random import shuffle, randint
 
-from blinds_and_bets import empty_bets_in_pot
 from hand_comp import *
 from Player import *
 
@@ -42,4 +41,3 @@ def give_money_to_winners(list_of_winners, list_of_players, pot):
                 index_of_winner = i
                 break
         list_of_players[index_of_winner].money += split
-    empty_bets_in_pot(pot, list_of_players)

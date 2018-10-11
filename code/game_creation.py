@@ -65,7 +65,7 @@ def turn_river(deck, board, n=1):
 def display_all_players(list_of_players):
     "Displays all the players"
     display_list = [player.display() for player in list_of_players]
-    return display_list
+    print(display_list)
 
 
 def check_if_game_over(list_of_players):

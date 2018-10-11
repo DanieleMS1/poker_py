@@ -12,7 +12,8 @@
 * [ ] Implement betting  
   * [x] Track the bets  
   * [x] Make all_in()  
-  * [ ] Blinds  
+  * [x] Blinds
+  * [x] Fold  
   * [ ] Call  
   * [ ] Raise  
   * [ ] Check  
